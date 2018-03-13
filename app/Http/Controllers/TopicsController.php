@@ -30,6 +30,9 @@ class TopicsController extends Controller
             return redirect($topic->link(), 301);
         }
 
+        // 点击数 +1
+        $topic->increment('view_count');
+
         return view('topics.show', compact('topic'));
     }
 
