@@ -15,6 +15,6 @@ class ReplyPolicy extends Policy
 
     public function destroy(User $user, Reply $reply)
     {
-        return $user->inAuthorOf($reply);
+        return $user->inAuthorOf($reply) || $user->inAuthorOf($reply->topic);
     }
 }
