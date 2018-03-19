@@ -20,4 +20,5 @@ class NotificationsController extends Controller
         Auth::user()->markAsRead();
         return view('notifications.index', compact('notifications'));
     }
+
 }
