@@ -2,11 +2,11 @@
 
 namespace App\Notifications;
 
+use App\Models\Reply;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Models\Reply;
+use Illuminate\Notifications\Notification;
 
 class TopicReplied extends Notification implements ShouldQueue
 {
@@ -39,7 +39,7 @@ class TopicReplied extends Notification implements ShouldQueue
     public function toDatabase($notifiable)
     {
         $topic = $this->reply->topic;
-        $link =  $topic->link(['#reply' . $this->reply->id]);
+        $link = $topic->link(['#reply' . $this->reply->id]);
 
         // 存入数据库里的数据
         return [
@@ -65,8 +65,8 @@ class TopicReplied extends Notification implements ShouldQueue
         $url = $this->reply->topic->link(['#reply' . $this->reply->id]);
 
         return (new MailMessage)
-                    ->line('你的话题有新回复！')
-                    ->action('查看回复', $url);
+            ->line('你的话题有新回复！')
+            ->action('查看回复', $url);
     }
 
     /**
