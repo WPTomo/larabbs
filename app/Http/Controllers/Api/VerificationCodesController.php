@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use Overtrue\EasySms\EasySms;
 use App\Http\Requests\Api\VerificationCodeRequest;
 
@@ -13,7 +12,7 @@ class VerificationCodesController extends Controller
         $phone = $request->phone;
 
         if (!app()->environment('production')) {
-            $code = 1106;
+            $code = '1106';
         } else {
             // 生成 4 位随机数，左侧补 0
             $code = str_pad(random_int(1, 9999), 4, 0, STR_PAD_LEFT);
