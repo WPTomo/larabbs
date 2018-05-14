@@ -34,5 +34,14 @@ $api->version('v1', [
         // 第三方登录
         $api->post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
             ->name('api.socials.authorizations.store');
+        // 登录
+        $api->post('authorizations', 'AuthorizationsController@store')
+            ->name('api.authorizations.store');
+        // 刷新 token
+        $api->put('authorizations/current', 'AuthorizationsController@update')
+            ->name('api.authorizaitons.update');
+        // 销毁 token
+        $api->delete('authorizations/current', 'AuthorizationsController@destroy')
+            ->name('api.authorizations.destroy');
     });
 });
